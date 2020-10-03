@@ -5,7 +5,7 @@ services: docker
 
 #docker-composeを立ち上げ
 before_install:
-  - docker-compose up --build -docker -d
+  - docker-compose up --build -d
 
 # DBを準備
 script:
