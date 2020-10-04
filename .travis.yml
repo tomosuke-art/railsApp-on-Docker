@@ -1,11 +1,14 @@
 # root権限で実行
 sudo: required
 
+#dockerの使用宣言
 services: docker
 
 #docker-composeを立ち上げ
 before_install:
+  #install前にコンテナの起動
   - docker-compose up --build -d
+  #herokuのdockerレジストリにログイン
   - docker login -u "$HEROKU_USERNAME" -p "$HEROKU_API_KEY" registry.heroku.com
 
 # DBを準備
