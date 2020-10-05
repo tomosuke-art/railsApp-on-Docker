@@ -6,11 +6,14 @@ volumes:
   #実行するコマンド内容を記述
 services:
   web:
+    #カレントディレクトリをビルド
     build: .
     ports:
       - '3000:3000'
+    # マウント先を指定
     volumes:
       - '.:/product-register'
+    # 環境変数を指定
     environment:
       - 'DATABASE_PASSWORD=postgres'
     tty: true

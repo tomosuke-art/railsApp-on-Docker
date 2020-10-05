@@ -1,3 +1,5 @@
+# 本番環境用のDockerfile
+# ruby imageを使用
 FROM ruby:2.5
 RUN apt-get update 
 RUN apt-get install -y \
@@ -6,9 +8,11 @@ RUN apt-get install -y \
     nodejs \
     postgresql-client \
     yarn
-
+# product-registerフォルダを作成
 WORKDIR /product-register
+# bundle context内のGemfileとgemfile.lockをproduct-register下に配置
 COPY Gemfile Gemfile.lock /product-register/
 RUN bundle install
+# カレントディレクトリのコードを全てコンテナに移す
 COPY . .
 CMD ["rails", "s"]
