@@ -18,6 +18,9 @@ script:
   - docker-compose exec --env 'RAILS_ENV=test' web rails test
 
 deploy:
+  #clean処理のskip
+  skip_cleanup: true
+
   provider: script
   script:
     docker build -t registry.heroku.com/$HEROKU_APP_NAME/web -f Dockerfile.prod .;
